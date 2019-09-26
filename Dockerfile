@@ -14,5 +14,7 @@ RUN chmod +x /usr/bin/combine_gafs
 # Entrypoint
 ENTRYPOINT ["/usr/bin/combine_gafs"]
 
+RUN mkdir /work-dir
 
+WORKDIR /work-dir
 
