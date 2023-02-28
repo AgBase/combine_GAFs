@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#######################################################################################################
+##SET UP OPTIONS FOR INPUT GAF FILES
+
+while getopts g:i:o: option
+do
+        case "${option}"
+        in
+
+                g) goanna_gaf=${OPTARG};;
+                i) ips_gaf=${OPTARG};;
+		o) out=${OPTARG};;
+        esac
+done
+
+head -n 5 $ips_gaf > header.tmp
+tail -n +6 $ips_gaf >  ips.tmp
+tail -n +6 $goanna_gaf >  goanna.tmp
+cat  header.tmp goanna.tmp ips.tmp > $out
+#rm *.tmp
