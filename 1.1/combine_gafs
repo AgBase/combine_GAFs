@@ -18,4 +18,4 @@ head -n 5 $ips_gaf > header.tmp
 tail -n +6 $ips_gaf >  ips.tmp
 tail -n +6 $goanna_gaf >  goanna.tmp
 cat  header.tmp goanna.tmp ips.tmp > $out
-#rm *.tmp
+rm *.tmp
