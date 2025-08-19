@@ -24,9 +24,6 @@ RUN chmod +x /usr/bin/iprs_pathannot_to_gmt.py
 
 ENV PATH=$PATH:/usr/bin
 
-# Entrypoint
-#ENTRYPOINT ["/usr/bin/iprs_pathannot_to_gmt.py"]
-
 RUN mkdir /work-dir
 
 WORKDIR /work-dir
