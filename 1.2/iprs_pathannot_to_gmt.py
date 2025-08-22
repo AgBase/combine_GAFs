@@ -3,6 +3,7 @@
 import pandas as pd
 import argparse
 import os
+import re
 import glob
 from sys import exit
 
@@ -103,3 +104,18 @@ alltogether = pd.concat([alltogether.drop('Input_protein_ID', axis=1), justlist]
 
 #PRINT TO TSV WITHOUT HEADER
 alltogether.to_csv(f"{outdir}/{base}_domains_and_pathways.gmt", sep='\t', header=False, index=False)
+
+#REMOVE TRAILING TABS
+
+gmtfile=f"{outdir}/{base}_domains_and_pathways.gmt"
+notab=f"{outdir}/gmt.tmp"
+
+
+with open(gmtfile, 'r') as infile, open(notab, 'w') as outfile:
+    for line in infile:
+        print (line)
+        cleaned_line = re.sub(r'\t+\n', '\n', line)
+        print (cleaned_line)
+        outfile.write(cleaned_line)
+
+os.rename(notab, gmtfile)
